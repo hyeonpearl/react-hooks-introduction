@@ -1,10 +1,12 @@
-const content = [
-  {
-    tab: 'Section 1',
-    content: 'Content of Section 1 ',
-  },
-  {
-    tab: 'Section 2',
-    content: 'Content of Section 2 ',
-  },
-];
+import { useState } from 'react';
+
+export const useTabs = (initialTab, allTabs) => {
+  const [currentIndex, setCurrentIndex] = useState(initialTab);
+  if (!allTabs || !Array.isArray(allTabs)) {
+    return;
+  }
+  return {
+    currentItem: allTabs[currentIndex],
+    changeItem: setCurrentIndex,
+  };
+};
