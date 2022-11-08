@@ -4,13 +4,15 @@ import { useInput } from './hooks/useInput';
 import { useTabs } from './hooks/useTabs';
 import { useTitle } from './hooks/useTitle';
 import { useClick } from './hooks/useClick';
+import { useConfirm } from './hooks/useConfirm';
 
 const App = () => {
-  const sayHello = () => console.log('Helloooooo!!');
-  const title = useClick(sayHello);
+  const deleteWord = () => console.log('Delete word...');
+  const abort = () => console.log('Aborted');
+  const confirmDelete = useConfirm('Are you sure?', deleteWord, abort);
   return (
     <div>
-      <h1 ref={title}>Hello</h1>
+      <button onClick={confirmDelete}>Delete word</button>
     </div>
   );
 };
