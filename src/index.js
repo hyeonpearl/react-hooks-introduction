@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom/client';
 import { useInput } from './hooks/useInput';
 import { useTabs } from './hooks/useTabs';
 import { useTitle } from './hooks/useTitle';
+import { useClick } from './hooks/useClick';
 
 const App = () => {
-  const titleUpdater = useTitle('Change Title!');
+  const sayHello = () => console.log('Helloooooo!!');
+  const title = useClick(sayHello);
   return (
     <div>
-      <h1>Hello</h1>
+      <h1 ref={title}>Hello</h1>
     </div>
   );
 };
