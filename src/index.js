@@ -5,14 +5,14 @@ import { useTabs } from './hooks/useTabs';
 import { useTitle } from './hooks/useTitle';
 import { useClick } from './hooks/useClick';
 import { useConfirm } from './hooks/useConfirm';
+import { usePreventLeave } from './hooks/usePreventLeave';
 
 const App = () => {
-  const deleteWord = () => console.log('Delete word...');
-  const abort = () => console.log('Aborted');
-  const confirmDelete = useConfirm('Are you sure?', deleteWord, abort);
+  const { enablePrevent, disablePrevent } = usePreventLeave();
   return (
     <div>
-      <button onClick={confirmDelete}>Delete word</button>
+      <button onClick={enablePrevent}>Protect</button>
+      <button onClick={disablePrevent}>Unprotect</button>
     </div>
   );
 };
