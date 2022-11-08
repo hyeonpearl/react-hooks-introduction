@@ -6,13 +6,14 @@ import { useTitle } from './hooks/useTitle';
 import { useClick } from './hooks/useClick';
 import { useConfirm } from './hooks/useConfirm';
 import { usePreventLeave } from './hooks/usePreventLeave';
+import { useBeforeLeave } from './hooks/useBeforeLeave';
 
 const App = () => {
-  const { enablePrevent, disablePrevent } = usePreventLeave();
+  const begForLife = () => console.log('Don t Leave!!!');
+  useBeforeLeave(begForLife);
   return (
     <div>
-      <button onClick={enablePrevent}>Protect</button>
-      <button onClick={disablePrevent}>Unprotect</button>
+      <h1>Hello</h1>
     </div>
   );
 };
