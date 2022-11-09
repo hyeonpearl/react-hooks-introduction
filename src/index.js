@@ -1,14 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { useScroll } from './hooks/useScroll';
+import { useFullscreen } from './hooks/useFullscreen';
 
 const App = () => {
-  const { y } = useScroll();
+  const onFulls = isFull => {
+    console.log(isFull ? 'Full' : 'Small');
+  };
+  const { element, triggerFull, exitFull } = useFullscreen(onFulls);
   return (
-    <div style={{ height: '1000vh' }}>
-      <h1 style={{ position: 'fixed', color: y > 100 ? 'red' : 'blue' }}>
-        Hello
-      </h1>
+    <div>
+      <div>
+        <img
+          ref={element}
+          src='https://i.ibb.co/R6RwNxx/grape.jpg'
+          alt='grape'
+          width='250'
+        />
+        <button onClick={exitFull}>Exit</button>
+      </div>
+      <button onClick={triggerFull}>Full Screen</button>
     </div>
   );
 };
