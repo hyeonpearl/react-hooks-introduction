@@ -1,0 +1,16 @@
+export const useNotification = (title, options) => {
+  const fireNotice = () => {
+    if (Notification.permission !== 'granted') {
+      Notification.requestPermission().then(permission => {
+        if (permission === 'granted') {
+          new Notification(title, options);
+        } else {
+          return;
+        }
+      });
+    } else {
+      new Notification(title, options);
+    }
+  };
+  return !('Notification' in window) ? undefined : fireNotice;
+};
