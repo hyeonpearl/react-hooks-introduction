@@ -1,19 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { useInput } from './hooks/useInput';
-import { useTabs } from './hooks/useTabs';
-import { useTitle } from './hooks/useTitle';
-import { useClick } from './hooks/useClick';
-import { useConfirm } from './hooks/useConfirm';
-import { usePreventLeave } from './hooks/usePreventLeave';
-import { useBeforeLeave } from './hooks/useBeforeLeave';
+import { useFadeIn } from './hooks/useFadeIn';
 
 const App = () => {
-  const begForLife = () => console.log('Don t Leave!!!');
-  useBeforeLeave(begForLife);
+  const fadeIn = useFadeIn(1, 2);
+  const fadeInP = useFadeIn(5, 10);
   return (
     <div>
-      <h1>Hello</h1>
+      <h1 {...fadeIn}>Hello</h1>
+      <p {...fadeInP}>ooooooooooo</p>
     </div>
   );
 };
