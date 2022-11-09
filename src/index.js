@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { useFadeIn } from './hooks/useFadeIn';
+import { useScroll } from './hooks/useScroll';
 
 const App = () => {
-  const fadeIn = useFadeIn(1, 2);
-  const fadeInP = useFadeIn(5, 10);
+  const { y } = useScroll();
   return (
-    <div>
-      <h1 {...fadeIn}>Hello</h1>
-      <p {...fadeInP}>ooooooooooo</p>
+    <div style={{ height: '1000vh' }}>
+      <h1 style={{ position: 'fixed', color: y > 100 ? 'red' : 'blue' }}>
+        Hello
+      </h1>
     </div>
   );
 };
